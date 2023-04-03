@@ -22,9 +22,10 @@ public class Test_005 : MonoBehaviour
             Debug.Log(i);
         }
 
+        int sum = 0;
         for (int i = 1; i < 10; i++)         //i가 1부터 10미만까지 1씩 증가
         {
-            sum += i;                        // (처리) 각 i의 값을 더한다.
+            sum += 1;                        // (처리) 각 i의 값을 더한다.
         }
         Debug.Log(sum);
     }
