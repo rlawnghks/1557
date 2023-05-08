@@ -8,15 +8,29 @@ public class ProjectileMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {       //벽에 충돌시 파괴
-        if(collision.gameObject.name == "Wall")
+        if(collision.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);
         }
             //몬스터에 충돌시
-        if (collision.gameObject.name == "Monster")
+        if (collision.gameObject.tag == "Monster")
         {
             //몬스터에게 데미지를 주고 사라진다.
             collision.gameObject.GetComponent<MonsterController>().Damanged(1);
+            Destroy(this.gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)        //Trigger 함수
+    {       //벽에 충돌시 파괴
+        if (other.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+        //몬스터에 충돌시
+        if (other.gameObject.tag == "Monster")
+        {
+            //몬스터에게 데미지를 주고 사라진다.
+            other.gameObject.GetComponent<MonsterController>().Damanged(1);
             Destroy(this.gameObject);
         }
     }
